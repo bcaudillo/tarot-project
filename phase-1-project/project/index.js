@@ -45,3 +45,17 @@ function presentAllCards(){
         
     }
 }
+function chooseSpread(object){
+    const spreads = () => document.getElementById('spreads')
+    const select = () => spreads().querySelector('select')
+    // const option = ()=> spreads().querySelector('option')
+    select().addEventListener('click',(event)=>{
+        const text = event.target.value
+        event.preventDefault();
+        // console.log(text)
+        h4ElementStuff(event,object)
+    
+        
+        
+    })
+}
