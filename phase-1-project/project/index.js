@@ -1,4 +1,17 @@
 //I've been workiing on the project and forgot to commit to github while I was coding. Starting commits from where I left off
+
+let cardForm = () => document.querySelector("new-spread-description")
+let spreadForm = () =>document.querySelector('#pickedSpread')
+// const spreads = document.getElementById('spreads')
+let spreadDescriptions = {
+    'Release & Retain': {'Release': 'What is ready to leave your life or has been taking up too much of your attention and engery?',
+        'Retain': 'What is necessary to keep for continual growth'},
+    'Asset & Hindrance': 'Asset: A natural gift or ability you possess',
+    'Advice from the Universe': '',
+    'Past, Present, Future': '',
+    'Mind,Body,Spirit':''
+}
+const spreadArray = Object.keys(spreadDescriptions)
 function asyncRequest(){
     fetch("https://rws-cards-api.herokuapp.com/api/v1/cards/")
         .then(resp=>resp.json())
