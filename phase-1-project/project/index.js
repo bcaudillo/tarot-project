@@ -1,4 +1,3 @@
-//I've been workiing on the project and forgot to commit to github while I was coding. Starting commits from where I left off
 
 let cardForm = () => document.querySelector("new-spread-description")
 let spreadForm = () =>document.querySelector('#pickedSpread')
@@ -12,6 +11,16 @@ let spreadDescriptions = {
     'Mind,Body,Spirit':''
 }
 const spreadArray = Object.keys(spreadDescriptions)
+
+
+function clickSpread(object){
+    const keys = Object.keys(object)
+    keys.forEach((key)=>{
+        getRandomItem(key) 
+    })
+}
+
+   
 function asyncRequest(){
     fetch("https://rws-cards-api.herokuapp.com/api/v1/cards/")
         .then(resp=>resp.json())
@@ -22,29 +31,7 @@ function asyncRequest(){
             setIntention()
         })
         
-}
-function presentAllCards(){
-    for(let i=0; i<cardsObj.length; i++){
-        //eventually will turn into present cards
-        //get all the cards
-        //must be forEach, map, or filter method
-        let li = document.createElement('li')
-        let li2 = document.createElement('li')
-        let li3 = document.createElement('li')
-        let p =document.createElement('p')
-        li.innerText = `Card Name:` + cardsObj[i].name
-        li2 = document.createElement('p')
-        li2.innerText = `Description:` + cardsObj[i].desc
-        li3 = document.createElement('p')
-        li3.innerText = `Type: ` + cardsObj[i].type
-        p.appendChild(li)
-        p.appendChild(li3)
-        p.appendChild(li2)
-    
-        
-        
     }
-}
 function chooseSpread(object){
     const spreads = () => document.getElementById('spreads')
     const select = () => spreads().querySelector('select')
@@ -58,11 +45,6 @@ function chooseSpread(object){
         
         
     })
-}
-function getRandomItem(array){
-    const randomIndex = Math.floor(Math.random()*array.length)
-    const item = array[randomIndex]
-    return item;
 }
 function h4ElementStuff(event,object){   
     let h = document.createElement('h4')
@@ -87,6 +69,7 @@ function handleDelete(e){
     e.target.parentNode.remove()
 }
     
+    
 function setIntention(){    
     document.addEventListener('submit',(event)=>{
         event.preventDefault()
@@ -99,7 +82,15 @@ function setIntention(){
         btn.addEventListener('click',handleDelete)
         btn.textContent = 'x'
         h3.appendChild(btn)
-    })
+    }
+)
+
+
+}
+function getRandomItem(array){
+    const randomIndex = Math.floor(Math.random()*array.length)
+    const item = array[randomIndex]
+    return item;
 }
 
 let clickCount = 0
@@ -141,3 +132,65 @@ function checkSpreadSize(event,object){
         }
     }
 }
+
+      
+    
+    // if(spread===two.filter(spread=>{
+    //     console.log('great')
+    // }))
+
+
+
+
+
+    // //neat idea:
+    // spreads.addEventListener('mouseover',(event)=>{
+    //     event.preventDefault()
+    //     if(event.target.innerText==='Release & Retain'){
+    //     event.target.style.color = 'orange'
+    //     }}
+    // )
+    
+
+
+        // else
+        //     setTimeout(()=>{
+        //     event.target.style.color = '';
+        //  },500);
+        // },false);
+        
+
+      
+
+
+    
+
+        
+function presentAllCards(){
+    for(let i=0; i<cardsObj.length; i++){
+        //eventually will turn into present cards
+        //get all the cards
+        //must be forEach, map, or filter method
+        let li = document.createElement('li')
+        let li2 = document.createElement('li')
+        let li3 = document.createElement('li')
+        let p =document.createElement('p')
+        li.innerText = `Card Name:` + cardsObj[i].name
+        li2 = document.createElement('p')
+        li2.innerText = `Description:` + cardsObj[i].desc
+        li3 = document.createElement('p')
+        li3.innerText = `Type: ` + cardsObj[i].type
+        p.appendChild(li)
+        p.appendChild(li3)
+        p.appendChild(li2)
+    
+      
+        
+    }
+}
+// let select = document.createElement('select')
+// select.appendChild(optn)
+// let optn = document.createElement('option')
+
+asyncRequest()
+
