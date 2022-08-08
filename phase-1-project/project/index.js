@@ -59,7 +59,11 @@ function chooseSpread(object){
         
     })
 }
-
+function getRandomItem(array){
+    const randomIndex = Math.floor(Math.random()*array.length)
+    const item = array[randomIndex]
+    return item;
+}
 function h4ElementStuff(event,object){   
     let h = document.createElement('h4')
     let pickedSpread = document.querySelector('#pickedSpread')
