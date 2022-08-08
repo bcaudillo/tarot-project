@@ -1,7 +1,6 @@
 
 let cardForm = () => document.querySelector("new-spread-description")
 let spreadForm = () =>document.querySelector('#pickedSpread')
-// const spreads = document.getElementById('spreads')
 let spreadDescriptions = {
     'Release & Retain': {'Release': 'What is ready to leave your life or has been taking up too much of your attention and engery?',
         'Retain': 'What is necessary to keep for continual growth'},
@@ -35,11 +34,9 @@ function asyncRequest(){
 function chooseSpread(object){
     const spreads = () => document.getElementById('spreads')
     const select = () => spreads().querySelector('select')
-    // const option = ()=> spreads().querySelector('option')
     select().addEventListener('click',(event)=>{
         const text = event.target.value
         event.preventDefault();
-        // console.log(text)
         h4ElementStuff(event,object)
     
         
@@ -133,12 +130,6 @@ function checkSpreadSize(event,object){
     }
 }
 
-      
-    
-    // if(spread===two.filter(spread=>{
-    //     console.log('great')
-    // }))
-
 
 
 
@@ -168,9 +159,6 @@ function checkSpreadSize(event,object){
         
 function presentAllCards(){
     for(let i=0; i<cardsObj.length; i++){
-        //eventually will turn into present cards
-        //get all the cards
-        //must be forEach, map, or filter method
         let li = document.createElement('li')
         let li2 = document.createElement('li')
         let li3 = document.createElement('li')
@@ -188,9 +176,5 @@ function presentAllCards(){
         
     }
 }
-// let select = document.createElement('select')
-// select.appendChild(optn)
-// let optn = document.createElement('option')
-
 asyncRequest()
 
