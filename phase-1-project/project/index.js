@@ -59,3 +59,20 @@ function chooseSpread(object){
         
     })
 }
+function setIntention(){    
+    document.addEventListener('submit',(event)=>{
+        event.preventDefault()
+        let input = document.querySelector('#new-spread-description').value
+        h3=document.createElement('h3')
+        h3.textContent = input
+        h3.style.color = 'orange'
+        pickedSpread.appendChild(h3)
+        let btn = document.createElement('button')
+        btn.addEventListener('click',handleDelete)
+        btn.textContent = 'x'
+        h3.appendChild(btn)
+    }
+)
+
+
+}
