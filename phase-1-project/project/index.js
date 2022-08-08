@@ -9,4 +9,26 @@ function asyncRequest(){
             setIntention()
         })
         
+}
+function presentAllCards(){
+    for(let i=0; i<cardsObj.length; i++){
+        //eventually will turn into present cards
+        //get all the cards
+        //must be forEach, map, or filter method
+        let li = document.createElement('li')
+        let li2 = document.createElement('li')
+        let li3 = document.createElement('li')
+        let p =document.createElement('p')
+        li.innerText = `Card Name:` + cardsObj[i].name
+        li2 = document.createElement('p')
+        li2.innerText = `Description:` + cardsObj[i].desc
+        li3 = document.createElement('p')
+        li3.innerText = `Type: ` + cardsObj[i].type
+        p.appendChild(li)
+        p.appendChild(li3)
+        p.appendChild(li2)
+    
+        
+        
     }
+}
