@@ -7,7 +7,7 @@ html {
   body {
     min-height: 100%;
     min-width: 100%;
-    background: linear-gradient(rgb(212, 192, 255), violet);
+    background: linear-gradient(rgb(106, 199, 174), rgb(57, 149, 112));
   }
   
   button {
@@ -29,16 +29,16 @@ html {
   
   #spreads {
     margin: 10px;
-    border: 1px solid #333;
-    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgb(138, 8, 8);
+    background: rgba(232, 23, 23, 0.75);
     padding: 15px 20px 18px 18px;
     border-radius: 5px;
     box-shadow: 2px 5px 5px #333;
   }
   #pickedSpread{
     margin: 10px;
-    border: 1px solid #333;
-    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgb(204, 202, 202);
+    background: rgba(66, 89, 114, 0.75);
     padding: 15px 20px 18px 18px;
     border-radius: 5px;
     box-shadow: 2px 5px 5px #333;
