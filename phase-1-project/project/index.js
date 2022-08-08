@@ -99,8 +99,45 @@ function setIntention(){
         btn.addEventListener('click',handleDelete)
         btn.textContent = 'x'
         h3.appendChild(btn)
+    })
+}
+
+let clickCount = 0
+function checkSpreadSize(event,object){
+    let two = ['Release & Retain','Asset & Hindrance']
+    for (item of two){
+        if(clickCount<10){
+            console.log(event.target.value)
+            if(item===event.target.value){
+                cardsObj = Object.keys(cardsObj)
+                randomValue = getRandomItem([1,2])
+                let r = getRandomItem(cardsObj)
+                let p = document.createElement('p')
+                let name = object.cards[r].name
+                let meaning = object.cards[r]
+                if (randomValue===1){
+                    
+                    meaning = object.cards[r].meaning_up
+                    clickCount ++
+                }
+                else{
+                    console.log('you got to me')
+                    meaning = '(Reversed position)' + object.cards[r].meaning_rev
+                    clickCount++
+                }
+                h4 = document.querySelector('h4')
+                h4.appendChild(p)
+                p.textContent = name
+                h5 = document.createElement('h5')
+                p.appendChild(h5)
+                h5.textContent = 'Card Description: ' + object.cards[r].desc 
+                li2 = document.createElement('li')
+                h5.appendChild(li2)
+                li2.textContent =  'Card meaning: '+meaning
+            }
+        }
+        else{
+            break
+        }
     }
-)
-
-
 }
