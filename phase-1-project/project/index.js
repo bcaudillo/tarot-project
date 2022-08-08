@@ -116,11 +116,11 @@ function checkSpreadSize(event,object){
                 h4 = document.querySelector('h4')
                 h4.appendChild(p)
                 p.textContent = name
-                h5 = document.createElement('h5')
-                p.appendChild(h5)
-                h5.textContent = 'Card Description: ' + object.cards[r].desc 
+                li3 = document.createElement('li')
+                p.appendChild(li3)
+                li3.textContent = 'Card Description: ' + object.cards[r].desc 
                 li2 = document.createElement('li')
-                h5.appendChild(li2)
+                p.appendChild(li2)
                 li2.textContent =  'Card meaning: '+meaning
             }
         }
