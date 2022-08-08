@@ -59,6 +59,30 @@ function chooseSpread(object){
         
     })
 }
+
+function h4ElementStuff(event,object){   
+    let h = document.createElement('h4')
+    let pickedSpread = document.querySelector('#pickedSpread')
+    const h4Array = document.querySelectorAll('h4')
+    const btn = document.createElement('button')
+    pickedSpread.appendChild(h)
+    h4Array.forEach(itm=>{
+        itm.appendChild(btn)
+        btn.textContent = 'x'
+    })
+    btn.addEventListener('click',handleDelete)
+    h.addEventListener('click',()=>{
+        checkSpreadSize(event,object)
+        // console.log(cardsObj[0].meaning_up)
+        })
+    h.textContent = event.target.value
+    console.log(event.target.value)
+    
+}
+function handleDelete(e){
+    e.target.parentNode.remove()
+}
+    
 function setIntention(){    
     document.addEventListener('submit',(event)=>{
         event.preventDefault()
