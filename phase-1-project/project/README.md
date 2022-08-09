@@ -18,4 +18,4 @@ Next, you'll browse the dropdown for available spreads, be sure to click twice. 
 
 
 ## Contributing
-Happy to accept any advice to make this app more seamless and intuative to use. a
+Happy to accept any advice to make this app more seamless and intuative for use. 

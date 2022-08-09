@@ -32,15 +32,15 @@ function asyncRequest(){
         })
         
     }
+const spreads = () => document.getElementById('spreads')
+const select = () => spreads().querySelector('select')
+const grabh4 = () => document.querySelector('h4')
 function chooseSpread(cardsObj){
-    const spreads = () => document.getElementById('spreads')
-    const select = () => spreads().querySelector('select')
     select().addEventListener('click',(event)=>{
         const text = event.target.value
         event.preventDefault();
         h4ElementStuff(event,cardsObj)
-        removeGhostH4()
-    
+        grabh4().addEventListener('click',handleDelete)
         
         
     })
@@ -91,7 +91,8 @@ function getRandomItem(array){
     const item = array[randomIndex]
     return item;
 }
-function dealSpread(number){
+function dealSpread(number,event){
+    grabh4().addEventListener('click',handleDelete)
     for(i=0;i<number;i++){
         randomValue = getRandomItem([1,2])
         let r = getRandomItem(cardsObjKeys)
@@ -120,19 +121,16 @@ function dealSpread(number){
 }
 
 let clickCount = 0
-function removeGhostH4(){
-    h4 = () => document.querySelector('h4')
-    h4().handleDelete
-}
+
 function checkSpreadSize(event){
     let two = ['Release & Retain','Asset & Hindrance']
     if(event.target.value===(two[0]||two[1])){
         console.log(event.target.value)
-        dealSpread(2)
+        dealSpread(2,event)
         
     }
     else{
-        dealSpread(3)
+        dealSpread(3,event)
         alert('you got me')
     }
 
