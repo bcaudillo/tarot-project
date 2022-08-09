@@ -25,25 +25,27 @@ function asyncRequest(){
         .then(resp=>resp.json())
         .then(object => {
             cardsObj = object.cards
-            presentAllCards()
-            chooseSpread(object)
+            cardsObjKeys = Object.keys(cardsObj)
+            // presentAllCards()
+            chooseSpread(cardsObj)
             setIntention()
         })
         
     }
-function chooseSpread(object){
+function chooseSpread(cardsObj){
     const spreads = () => document.getElementById('spreads')
     const select = () => spreads().querySelector('select')
     select().addEventListener('click',(event)=>{
         const text = event.target.value
         event.preventDefault();
-        h4ElementStuff(event,object)
+        h4ElementStuff(event,cardsObj)
+        removeGhostH4()
     
         
         
     })
 }
-function h4ElementStuff(event,object){   
+function h4ElementStuff(event,cardsObj){   
     let h = document.createElement('h4')
     let pickedSpread = document.querySelector('#pickedSpread')
     const h4Array = document.querySelectorAll('h4')
@@ -55,7 +57,7 @@ function h4ElementStuff(event,object){
     })
     btn.addEventListener('click',handleDelete)
     h.addEventListener('click',()=>{
-        checkSpreadSize(event,object)
+        checkSpreadSize(event,cardsObj)
         // console.log(cardsObj[0].meaning_up)
         })
     h.textContent = event.target.value
@@ -73,7 +75,7 @@ function setIntention(){
         let input = document.querySelector('#new-spread-description').value
         h3=document.createElement('h3')
         h3.textContent = input
-        h3.style.color = 'orange'
+        h3.style.color = 'white'
         pickedSpread.appendChild(h3)
         let btn = document.createElement('button')
         btn.addEventListener('click',handleDelete)
@@ -89,92 +91,94 @@ function getRandomItem(array){
     const item = array[randomIndex]
     return item;
 }
+function dealSpread(number){
+    for(i=0;i<number;i++){
+        randomValue = getRandomItem([1,2])
+        let r = getRandomItem(cardsObjKeys)
+        let p = document.createElement('p')
+        let name = cardsObj[r].name
+        let meaning = cardsObj[r]
+            if (randomValue===1){
+                
+                meaning = cardsObj[r].meaning_up
+                clickCount ++
+            }
+            else{
+                meaning = '(Reversed position)' + cardsObj[r].meaning_rev
+                clickCount++
+            }
+            h4 = document.querySelector('h4')
+            h4.appendChild(p)
+            p.textContent = name
+            li3 = document.createElement('li')
+            p.appendChild(li3)
+            li3.textContent = 'Card Description: ' + cardsObj[r].desc 
+            li2 = document.createElement('li')
+            p.appendChild(li2)
+            li2.textContent =  'Card meaning: '+meaning
+}
+}
 
 let clickCount = 0
-function checkSpreadSize(event,object){
+function removeGhostH4(){
+    h4 = () => document.querySelector('h4')
+    h4().handleDelete
+}
+function checkSpreadSize(event){
     let two = ['Release & Retain','Asset & Hindrance']
-    for (item of two){
-        if(clickCount<10){
-            console.log(event.target.value)
-            if(item===event.target.value){
-                cardsObj = Object.keys(cardsObj)
-                randomValue = getRandomItem([1,2])
-                let r = getRandomItem(cardsObj)
-                let p = document.createElement('p')
-                let name = object.cards[r].name
-                let meaning = object.cards[r]
-                if (randomValue===1){
-                    
-                    meaning = object.cards[r].meaning_up
-                    clickCount ++
-                }
-                else{
-                    console.log('you got to me')
-                    meaning = '(Reversed position)' + object.cards[r].meaning_rev
-                    clickCount++
-                }
-                h4 = document.querySelector('h4')
-                h4.appendChild(p)
-                p.textContent = name
-                li3 = document.createElement('li')
-                p.appendChild(li3)
-                li3.textContent = 'Card Description: ' + object.cards[r].desc 
-                li2 = document.createElement('li')
-                p.appendChild(li2)
-                li2.textContent =  'Card meaning: '+meaning
-            }
-        }
-        else{
-            break
-        }
+    if(event.target.value===(two[0]||two[1])){
+        console.log(event.target.value)
+        dealSpread(2)
+        
     }
+    else{
+        dealSpread(3)
+    }
+
+       
+    
 }
 
 
 
-
-
-    // //neat idea:
-    // spreads.addEventListener('mouseover',(event)=>{
-    //     event.preventDefault()
-    //     if(event.target.innerText==='Release & Retain'){
-    //     event.target.style.color = 'orange'
-    //     }}
-    // )
+//     //neat idea:
+// let pickP = document.querySelector("p")
+// pickP.addEventListener('mouseover',(event)=>{
+//     event.preventDefault()
+//     if(event.target.innerText==='Release & Retain'){
+//     event.target.style.color = 'orange'
+//     }
+//     else{
+//         setTimeout(()=>{
+//         event.target.style.color = '';
+//         },500);
+//     }
+// },false)
+//     // },false)
     
-
-
-        // else
-        //     setTimeout(()=>{
-        //     event.target.style.color = '';
-        //  },500);
-        // },false);
-        
-
-      
 
 
     
 
         
-function presentAllCards(){
-    for(let i=0; i<cardsObj.length; i++){
-        let li = document.createElement('li')
-        let li2 = document.createElement('li')
-        let li3 = document.createElement('li')
-        let p =document.createElement('p')
-        li.innerText = `Card Name:` + cardsObj[i].name
-        li2 = document.createElement('p')
-        li2.innerText = `Description:` + cardsObj[i].desc
-        li3 = document.createElement('p')
-        li3.innerText = `Type: ` + cardsObj[i].type
-        p.appendChild(li)
-        p.appendChild(li3)
-        p.appendChild(li2)
+// function presentAllCards(){
+//     for(let i=0; i<cardsObj.length; i++){
+//         let li = document.createElement('li')
+//         let li2 = document.createElement('li')
+//         let li3 = document.createElement('li')
+//         let p =document.createElement('p')
+//         li.innerText = `Card Name:` + cardsObj[i].name
+//         li2 = document.createElement('p')
+//         li2.innerText = `Description:` + cardsObj[i].desc
+//         li3 = document.createElement('p')
+//         li3.innerText = `Type: ` + cardsObj[i].type
+//         p.appendChild(li)
+//         p.appendChild(li3)
+//         p.appendChild(li2)
     
       
         
-    }
-}
+//     }
+// }
 asyncRequest()
 
