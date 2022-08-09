@@ -120,10 +120,7 @@ function dealSpread(number){
 }
 
 let clickCount = 0
-function removeGhostH4(){
-    h4 = () => document.querySelector('h4')
-    h4().handleDelete
-}
+
 function checkSpreadSize(event){
     let two = ['Release & Retain','Asset & Hindrance']
     if(event.target.value===(two[0]||two[1])){
