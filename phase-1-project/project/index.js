@@ -133,6 +133,7 @@ function checkSpreadSize(event){
     }
     else{
         dealSpread(3)
+        alert('you got me')
     }
 
        
